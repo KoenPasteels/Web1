@@ -1,0 +1,372 @@
+:root{
+    --background: #d3d3d3;
+}
+
+html{
+    height: 100%;}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: black;
+    min-height: 100%;
+}
+
+.content{
+    /* content class is nodig of nav-toggle-label gaat onbestaand zijn */
+}
+
+
+
+/*------------------------------------------------------------------------*/
+
+header{
+    background: var(--background);
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo{
+    margin: 0;
+    grid-column: 2/3;
+}
+
+.nav-toggle{
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+
+
+.nav-toggle-label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+    display: block;
+    background: #2d51a3;
+    height: 4px;
+    width: 3em;
+    border-radius: 2px;
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+    content:'';
+    position: absolute;
+}
+
+.nav-toggle-label span::before{
+    bottom: 7px;
+}
+
+.nav-toggle-label span::after{
+    top: 7px;
+}
+
+nav{
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--background);
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+}
+
+nav ul{
+    margin: 1em 1em 1em 1em;
+    list-style: none;
+}
+
+nav li{
+
+}
+
+nav a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+.nav-toggle:checked ~ nav{
+    transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a{
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px){
+    .nav-toggle-label{
+        display: none;
+    }
+
+    header{
+        display: grid;
+        grid-template-columns: .5fr auto minmax(600px, 3fr) .2fr;
+    }
+
+    .logo{
+        grid-column: 2 / 3;
+    }
+
+    nav{
+        position: relative;
+        text-align: left;
+        transition: none;
+        transform: scale(1,1);
+        background: none;
+        top: initial;
+        left: initial;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav ul{
+        display: flex;
+    }
+
+    nav li{
+        margin-left: 3em;
+        margin-bottom: 0;
+    }
+
+    nav a{
+        opacity: 1;
+        position: relative
+    }
+
+    nav a::before{
+        content:'';
+        display: block;
+        height: 5px;
+        background: #2d51a3;
+        position: absolute;
+        bottom: -.75em;
+        left: 0;
+        right: 0;
+        transform: scale(0, 1);
+        transform-origin: center;
+        transition: transform ease-in-out 250ms;
+    }
+
+    nav a:hover::before{
+        transform: scale(1,1);
+    }
+}
+
+/*-------------------------main-------------------------------------*/
+
+main{
+    height: 90%;
+    background-color: lightblue;
+    padding-top: 70px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+
+/*----------table------------*/
+
+.tablesection{
+    grid-row: 3/4;
+    margin: 0 auto 10px auto;
+}
+
+td{
+    border: 1px solid #000000;
+    padding: 5px 5px 5px 5px;
+}
+
+/*--------------index---------------------*/
+
+#article1{
+    grid-row: 1/2;
+    padding: 10px 20px 0 15px;
+}
+
+#article1 p{
+    line-height: 23px;
+    margin-right: 70px;
+}
+
+#article1 img{
+    float: left;
+    margin-right: 15px;
+}
+
+#article2{
+    grid-row: 2/3;
+    padding: 5px 20px 10px 15px;
+}
+
+#article2 img{
+    float: right;
+}
+
+#article2 p{
+    margin-bottom: 8px;
+    line-height: 23px;
+}
+
+
+/*--------------------------------Regels------------------------------------*/
+
+
+#article3{
+    grid-row: 1/2;
+}
+
+#article4{
+    grid-row: 2/3;
+}
+
+h1{
+    font-size: 23px;
+    margin: 10px 15px 10px 15px;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 19px;
+    margin: 10px 0 10px 15px;
+    text-decoration: underline;
+}
+
+p{
+    margin: 0 15px 10px 15px;
+    line-height: 20px;
+}
+
+main ul{
+    list-style-type: circle;
+    margin: 0 15px 10px 30px;
+}
+
+main ul li{
+    line-height: 20px;
+    padding: 5px 0 5px 0;
+}
+
+
+
+
+/*--------------------------------Reserveren--------------------------------*/
+
+.sectionmelding{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sectionmelding label span{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.hidden{
+    display:none;
+}
+
+input[type=checkbox] + label {
+    position:relative;
+}
+
+input[type=checkbox]:checked + label {
+    animation: closing 0.3s forwards ease-in-out;
+}
+
+.alert-message{
+    margin: 10px auto 0 auto;
+    border-radius: 3px;
+    line-height: 23px;
+    display:block;
+    width:510px;
+    padding: 12px;
+    box-sizing: border-box;
+    color: black;
+    background: #d3d3d3;
+}
+
+@keyframes closing {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#formsection{
+    margin: 0 auto 0 auto;
+}
+
+section h1{
+    margin: 5px auto 0 auto;
+    font-size: 40px;
+}
+
+form{
+    text-align: center;
+}
+
+fieldset{
+    margin: 10px auto 10px auto;
+    border: 1px solid #000000;
+    font-size: 23px;
+    width: 260px;
+}
+
+select, label, input, .personal{
+    margin: 0 0 10px 10px;
+}
+
+
+/*--------------------------------footer------------------------------------*/
+
+footer{
+    background: var(--background);
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height: 70px;
+}
+
+footer section{
+    margin: auto 20px auto 20px;
+}
+
+footer img{
+    height: 32px;
+}
+
+
+
+
+
